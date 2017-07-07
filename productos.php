@@ -3,7 +3,7 @@
 <head>
 	<title>Abarrotera Galaxia</title>
 	<meta charset="utf-8">
-	<Beta name="autor" content="Valle Rodriguez Julio Cesar">
+	<meta name="autor" content="Valle Rodriguez Julio Cesar">
 	<meta name="description" content="Abarrotera con precios competitivos">
 	<meta name="keywords" content="producto mayoreo menudeo ofertas celaya cortazar">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -38,9 +38,35 @@
 		<div id="content">
 			<section>
 				<div id="info">
-					<h1>Mapa de Ubicación</h1>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d239046.64264815368!2d-101.22454742435714!3d20.583818568743492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842cba7209c08e4f%3A0x32cd4e1163659610!2sEl+Puma+Abarrotero!5e0!3m2!1ses-419!2smx!4v1498861561735" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-					<p>Lázaro Cárdenas 792, Villas del Romeral, 38095 Celaya, Gto.</p>
+					<h1>Productos</h1>
+					<div id="producto">
+						<table>
+						<?php
+							include("config.php");
+							$i=0;
+							foreach($conexion->query('select * from productos_view') as $fila) {
+								if($i<=0){
+						        	echo "<tr>";
+						        }
+						        echo "<td>";
+						        	echo '<div class="normal"><img src="image/productos/'.$fila['imagen'].'" width="80px" height="80px"></div>';							
+							        echo '<h3>'.$fila['producto'].'</h3>';
+							        echo '<span class="gamage">'.$fila['presentacion'].' '.$fila['unidad_medida'].'</span><br />';
+							        echo '<span class="p_real">$'.$fila['preciou'].'</span>';
+							        echo '<span class="descuento"></span><br />';
+							        echo '<span class="p_descuento">$'.$fila['cantidadm'].'</span><br />';
+							        echo '<span class="p_mayoreo">$'.$fila['preciom'].'</span>';
+						        echo "</td>";
+						        $i++;
+						        if($i>=4){
+						        	echo "</tr>";
+						        	$i=0;
+						        }
+						    }
+						    $conexion=null;
+						?>
+						</table>
+					</div>
 				</div>
 			</section>
 			<aside>
@@ -73,7 +99,7 @@
 				<div class="columna_inferior">
 					<h1>Clientes</h1>
 					<ul>
-						<li><a href="atencion_clientes</li>.html">Atencion al Cliente</a></li>
+						<li><a href="atencion_clientes.html">Atencion al Cliente</a></li>
 					</ul>
 				</div>
 				<div class="columna_inferior">

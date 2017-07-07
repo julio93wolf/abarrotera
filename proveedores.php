@@ -31,7 +31,7 @@
 			<ul>	
 				<li><a href="index.html">Inicio</a></li>
 				<li><a href="quienes_somos.html">Quiénes Somos</a></li>
-				<li><a href="productos.html">Productos</a></li>
+				<li><a href="productos.php">Productos</a></li>
 				<li><a href="promociones.html">Promociones</a></li>
 				<li><a href="contacto.html">Contacto</a></li>
 			</ul>
@@ -40,23 +40,13 @@
 			<section>
 				<div id="info">
 					<h1>Proveedores</h1>
-					<img src="image/proveedores.jpg" width="650" alt="Proveedores" />
-					<div class="proveedor">
-						<img src="image/proveedores/logo1.jpg" width="78px" height="80px" alt="Proveedor">
-						<h2>Grupo Herdez</h2>
-					</div>
-					<div class="proveedor">
-						<img src="image/proveedores/logo2.jpg" width="78px" height="80px" alt="Proveedor">
-						<h2>PEPSICO</h2>
-					</div>
-					<div class="proveedor">
-						<img src="image/proveedores/logo3.jpg" width="78px" height="80px" alt="Proveedor">
-						<h2>Kimberly - Clark de México</h2>
-					</div>
-					<div class="proveedor">
-						<img src="image/proveedores/logo5.jpg" width="78px" height="80px" alt="Proveedor">
-						<h2>Colgate</h2>
-					</div>
+					<?php
+						include("config.php");
+						foreach($conexion->query('select * from proveedor') as $fila) {
+					        echo '<img src="image/proveedores/'.$fila['logo'].'" alt="'.$fila['proveedor'].'" />';
+					    }
+					    $conexion=null;
+					?>
 				</div>
 			</section>
 			<aside>
@@ -95,7 +85,7 @@
 				<div class="columna_inferior">
 					<h1>Proveedores</h1>
 					<ul>
-						<li><a href="proveedores.html">Proveedores</a></li>
+						<li><a href="proveedores.php">Proveedores</a></li>
 					</ul>
 				</div>				
 				
