@@ -1,6 +1,8 @@
 use abarrotera;
 
-/*** Catergoria ***/
+/*###################################################################*/
+/*#							Categoria								#*/
+/*###################################################################*/
 
 insert into categoria values (NULL,'Aceites Comestibles');
 insert into categoria values (NULL,'Agua');
@@ -40,6 +42,9 @@ insert into categoria values (NULL,'Toalla Femenina');
 insert into categoria values (NULL,'Velas y Veladoras');
 insert into categoria values (NULL,'Higiene');
 
+/*###################################################################*/
+/*#							Proveedor								#*/
+/*###################################################################*/
 insert into proveedor values (NULL,'Grupo Herdez','herdez.jpg');
 insert into proveedor values (NULL,'PepsiCo','pepsico.jpg');
 insert into proveedor values (NULL,'Kimberly Clark','kimberly_clark.jpg');
@@ -52,8 +57,12 @@ insert into proveedor values (NULL,'Nestlé','nestle.jpg');
 insert into proveedor values (NULL,'Alpura','alpura.jpg');
 insert into proveedor values (NULL,'Procter & Gamble','procter_gamble.jpg');
 
+/*###################################################################*/
+/*#							Marca									#*/
+/*###################################################################*/
+
 /*Grupo Herdez*/
-insert into marca values (NULL,'McCormick',1,26);
+insert into marca values (NULL,'McCormick',1,4);
 insert into marca values (NULL,'Nair',1,4);
 insert into marca values (NULL,'Herdez',1,4);
 insert into marca values (NULL,'Doña María',1,4);
@@ -90,6 +99,11 @@ insert into marca values (NULL,'La Costeña',5,4);
 insert into marca values (NULL,'Campbells',5,4);
 insert into marca values (NULL,'Búfalo',5,4);
 /*La Corona*/
+
+
+/*###################################################################*/
+/*#							Producto								#*/
+/*###################################################################*/
 
 /*McCormick*/
 insert into producto values (null,'Mayonesa',1);
@@ -131,101 +145,124 @@ insert into producto values (null,'Pure de Tomate',6);
 /*Embasa*/
 insert into producto values (null,'Salsa Catsup',7);
 
+/*###################################################################*/
+/*#							Unida de Medida							#*/
+/*###################################################################*/
 insert into unidad_medida values (null,'Gramos');
 insert into unidad_medida values (null,'Sobres');
 insert into unidad_medida values (null,'Mililitros');
 insert into unidad_medida values (null,'Litro');
 insert into unidad_medida values (null,'Kilogramos');
 
+/*###################################################################*/
+/*#							Presentacion							#*/
+/*###################################################################*/
+
 /*Mayonesa*/
-insert into presentacion values (1,'SKU-MCK000001','105',1,15,12,10.4);
-insert into presentacion values (1,'SKU-MCK000002','190',1,18,12,15.6);
-insert into presentacion values (1,'SKU-MCK000003','390',1,30,6,27.5);
-insert into presentacion values (1,'SKU-MCK000004','725',1,45,12,44);
+insert into presentacion values (1,'SKU-MCK000001','105',1,15,12,10.4,'SKU-MCK000001.jpg');
+insert into presentacion values (1,'SKU-MCK000002','190',1,18,12,15.6,'SKU-MCK000002.jpg');
+insert into presentacion values (1,'SKU-MCK000003','390',1,30,6,27.5,'SKU-MCK000003.jpg');
+insert into presentacion values (1,'SKU-MCK000004','725',1,45,12,44,'SKU-MCK000004.jpg');
 /*Té de Manzanilla*/
-insert into presentacion values (2,'SKU-MCK000005','25',2,18,12,15.9);
+insert into presentacion values (2,'SKU-MCK000005','25',2,18,12,15.9,'SKU-MCK000005.jpg');
 /*Té de Hierbabuena*/
-insert into presentacion values (3,'SKU-MCK000006','25',2,18,12,15.9);
+insert into presentacion values (3,'SKU-MCK000006','25',2,18,12,15.9,'SKU-MCK000006.jpg');
 /*Té de Limon*/
-insert into presentacion values (4,'SKU-MCK000007','25',2,18,12,15.9);
+insert into presentacion values (4,'SKU-MCK000007','25',2,18,12,15.9,'SKU-MCK000007.jpg');
 /*Té de Canela*/
-insert into presentacion values (5,'SKU-MCK000008','25',2,18,12,15.9);
+insert into presentacion values (5,'SKU-MCK000008','25',2,18,12,15.9,'SKU-MCK000008.jpg');
 /*Mermelada de Fresa*/
-insert into presentacion values (6,'SKU-MCK000009','270',1,19,12,16.7);
+insert into presentacion values (6,'SKU-MCK000009','270',1,19,12,16.7,'SKU-MCK000009.jpg');
 /*Té de Canela Manzana*/
-insert into presentacion values (7,'SKU-MCK000010','25',2,30,24,27.9);
+insert into presentacion values (7,'SKU-MCK000010','25',2,30,24,27.9,'SKU-MCK000010.png');
 /*Mostaza*/
-insert into presentacion values (8,'SKU-MCK000011','115',1,10,12,8.2);
-insert into presentacion values (8,'SKU-MCK000012','210',1,15,12,10.7);
+insert into presentacion values (8,'SKU-MCK000011','115',1,10,12,8.2,'SKU-MCK000011.jpg');
+insert into presentacion values (8,'SKU-MCK000012','210',1,15,12,10.7,'SKU-MCK000012.jpg');
 /*Té 7 Azahares*/
-insert into presentacion values (9,'SKU-MCK000013','25',2,26,12,22.4);
+insert into presentacion values (9,'SKU-MCK000013','25',2,26,12,22.4,'SKU-MCK000013.jpg');
 /*Especia Sal con Ajo*/
-insert into presentacion values (10,'SKU-MCK000014','157',1,20,6,17.9);
-insert into presentacion values (10,'SKU-MCK000015','1170',1,98,3,89.9);
+insert into presentacion values (10,'SKU-MCK000014','157',1,20,6,17.9,'SKU-MCK000014.jpg');
+insert into presentacion values (10,'SKU-MCK000015','1170',1,98,3,89.9,'SKU-MCK000015.png');
 /*Ablandador de Carne*/
-insert into presentacion values (11,'SKU-MCK000016','992',1,82,6,77.4);
+insert into presentacion values (11,'SKU-MCK000016','992',1,82,6,77.4,'SKU-MCK000016.jpg');
 /*Mermelada de Zarzamora*/
-insert into presentacion values (12,'SKU-MCK000017','500',1,35,12,27.9);
-
+insert into presentacion values (12,'SKU-MCK000017','500',1,35,12,27.9,'SKU-MCK000017.jpg');
 /*Atun en Agua*/
-insert into presentacion values (13,'SKU-NAI0000001','130',1,15,24,12.7);
+insert into presentacion values (13,'SKU-NAI000001','130',1,15,24,12.7,'SKU-NAI000001.jpg');
 /*Atun en Aceite*/
-insert into presentacion values (14,'SKU-NAI0000002','130',1,15,24,12.7);
-
+insert into presentacion values (14,'SKU-NAI000002','130',1,15,24,12.7,'SKU-NAI000002.jpg');
 /*Ensalada de Legumbres*/
-insert into presentacion values (15,'SKU-HDZ000001','400',1,13,24,10.8);
-insert into presentacion values (15,'SKU-HDZ000002','220',1,13,24,6.9);
+insert into presentacion values (15,'SKU-HDZ000001','400',1,13,24,10.8,'SKU-HDZ000001.jpg');
+insert into presentacion values (15,'SKU-HDZ000002','220',1,13,24,6.9,'SKU-HDZ000002.jpg');
 /*Granos de Elote*/
-insert into presentacion values (16,'SKU-HDZ000003','220',1,10,12,7.3);
+insert into presentacion values (16,'SKU-HDZ000003','220',1,10,12,7.3,'SKU-HDZ000003.jpg');
 /*Atun Lomo en Agua*/
-insert into presentacion values (17,'SKU-HDZ000004','130',1,18,24,15.75);
+insert into presentacion values (17,'SKU-HDZ000004','130',1,18,24,15.75,'SKU-HDZ000004.jpg');
 /*Duraznos en Almibar*/
-insert into presentacion values (18,'SKU-HDZ000005','800',1,47,12,43.30);
+insert into presentacion values (18,'SKU-HDZ000005','800',1,47,12,43.30,'SKU-HDZ000005.jpg');
 /*Champiñones Trozos*/
-insert into presentacion values (19,'SKU-HDZ000006','186',1,16,12,13);
+insert into presentacion values (19,'SKU-HDZ000006','186',1,16,12,13,'SKU-HDZ000006.jpg');
 /*Chícharo*/
-insert into presentacion values (20,'SKU-HDZ000007','215',1,8,24,5.70);
-insert into presentacion values (20,'SKU-HDZ000008','400',1,12,24,9.60);
+insert into presentacion values (20,'SKU-HDZ000007','215',1,8,24,5.70,'SKU-HDZ000007.jpg');
+insert into presentacion values (20,'SKU-HDZ000008','400',1,12,24,9.60,'SKU-HDZ000008.jpg');
 /*Champiñon Rebanado*/
-insert into presentacion values (21,'SKU-HDZ000009','380',1,28,12,25.2);
-insert into presentacion values (21,'SKU-HDZ000010','800',1,46,6,42.2);
+insert into presentacion values (21,'SKU-HDZ000009','380',1,28,12,25.2,'SKU-HDZ000009.jpg');
+insert into presentacion values (21,'SKU-HDZ000010','800',1,46,6,42.2,'SKU-HDZ000010.jpg');
 /*Atun Lomo en Aceite*/
-insert into presentacion values (22,'SKU-HDZ000011','130',1,20,48,15.3);
+insert into presentacion values (22,'SKU-HDZ000011','130',1,20,48,15.3,'SKU-HDZ000011.jpg');
 /*Chícharo con Zanahoria*/
-insert into presentacion values (23,'SKU-HDZ000012','225',1,10,24,6.8);
-insert into presentacion values (23,'SKU-HDZ000013','400',1,15,24,11.3);
+insert into presentacion values (23,'SKU-HDZ000012','225',1,10,24,6.8,'SKU-HDZ000012.jpg');
+insert into presentacion values (23,'SKU-HDZ000013','400',1,15,24,11.3,'SKU-HDZ000013.jpg');
 /*Coctel de Frutas en Almíbar*/
-insert into presentacion values (24,'SKU-HDZ000014','850',1,55,12,49.5);
+insert into presentacion values (24,'SKU-HDZ000014','850',1,55,12,49.5,'SKU-HDZ000014.jpg');
 /*Pimiento Morron Tira*/
-insert into presentacion values (25,'SKU-HDZ000015','185',1,16,24,14.3);
+insert into presentacion values (25,'SKU-HDZ000015','185',1,16,24,14.3,'SKU-HDZ000015.jpg');
 /*Salsa Verde*/
-insert into presentacion values (26,'SKU-HDZ000016','210',1,12,24,8.8);
+insert into presentacion values (26,'SKU-HDZ000016','210',1,12,24,8.8,'SKU-HDZ000016.jpg');
 
-/*Roles*/
+/*###################################################################*/
+/*#							Roles									#*/
+/*###################################################################*/
 insert into rol values (null,'Cliente');
 insert into rol values (null,'Administrador');
 
-/*Usuarios*/
+/*###################################################################*/
+/*#							Usuarios								#*/
+/*###################################################################*/
 insert into usuario values (null,'abc123@gmail.com','123');
 insert into usuario values (null,'abc456@gmail.com','123');
 insert into usuario values (null,'def123@gmail.com','123');
 insert into usuario values (null,'def456@gmail.com','123');
 
+/*###################################################################*/
+/*#							Usuario Rol								#*/
+/*###################################################################*/
 insert into usuario_rol values (1,1);
 insert into usuario_rol values (2,1);
 insert into usuario_rol values (3,2);
 insert into usuario_rol values (4,2);
 
+/*###################################################################*/
+/*#							Clientes								#*/
+/*###################################################################*/
 insert into cliente values (null,1,'Juan',null,null,null,null);
 insert into cliente values (null,2,'Maria',null,null,null,null);
 
+/*###################################################################*/
+/*#							Empleados								#*/
+/*###################################################################*/
 insert into empleado values (null,3,'Pedro',null,null);
 insert into empleado values (null,4,'Alfonso',null,null);
 
+/*###################################################################*/
+/*#							Sucursales								#*/
+/*###################################################################*/
 insert into sucursal values (null,'Celaya');
 insert into sucursal values (null,'Cortazar');
 
-/*Carrito y Carrito Detalle*/
+/*###################################################################*/
+/*#							Carritos de Venta						#*/
+/*###################################################################*/
 insert into carrito values (null,1,3,1,'2017-7-5');
 insert into carrito_detalle values (1,'SKU-MCK000001',10,15.00,0);
 insert into carrito_detalle values (1,'SKU-MCK000005',5,18.00,0);
@@ -236,15 +273,20 @@ insert into carrito_detalle values (2,'SKU-HDZ000006',10,16.00,0);
 insert into carrito_detalle values (2,'SKU-HDZ000013',5,15.00,0);
 insert into carrito_detalle values (2,'SKU-HDZ000016',3,12.00,0);
 
-insert into carrito values (null,2,3,2,'2017-7-8');
-insert into carrito_detalle values (3,'SKU-HDZ000007',10,8.00,0);
-insert into carrito_detalle values (3,'SKU-HDZ000008',5,12.00,0);
-insert into carrito_detalle values (3,'SKU-HDZ000009',3,28.00,0);
+/*###################################################################*/
+/*#							Promociones								#*/
+/*###################################################################*/
 
 insert into promocion values (null,'2017-7-3','2017-7-8','');
 insert into promocion values (null,'2017-7-15','2017-7-9','');
 
-drop view productos_view;
+
+/*###################################################################*/
+/*#							Vistas									#*/
+/*###################################################################*/
+
+/* Productos */
+drop view  if exists productos_view;
 create view productos_view as
 select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom,pre.imagen
 from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
@@ -253,11 +295,8 @@ from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
                     inner join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
 order by producto asc;
 
-use abarrotera;                    
-
-/*Top 5*/
-/*sku, id_producto, presentacion*/
-drop view top5_view;
+/* Top 5 más vendidos */
+drop view if exists top5_view;
 create view top5_view as
 select pro.producto,pre.presentacion,cd.sku, sum(cd.cantidad) as cantidad
 from carrito_detalle cd inner join presentacion pre on cd.sku = pre.sku
@@ -265,17 +304,14 @@ from carrito_detalle cd inner join presentacion pre on cd.sku = pre.sku
 group by 1,2,3 order by sum(cantidad) desc
 limit 5;
 
-/*5 productos random*/
+/* 5 productos recomendados random */
+drop view if exists rand5_view;
 create view rand5_view as
 select pro.producto,pre.presentacion,cd.sku
 from carrito_detalle cd inner join presentacion pre on cd.sku = pre.sku
 						inner join producto pro on pre.id_producto = pro.id_producto
 group by 1,2,3 order by rand() desc
 limit 5;
-
-select * from rand5_view;
-
-select * from promocion;
 
 select *
 from promocion 

@@ -1,15 +1,16 @@
+<?php
+	include("config.php");
+?>				
 				</div>
 			</section>
 			<aside>
 				<div id="destacados">
 					<?php
-						include("config.php");
 						include('components/top5.php');
 					?>
 				</div>
 				<div id="nuevos">
 					<?php
-						include("config.php");
 						include('components/rand5.php');
 					?>
 				</div>

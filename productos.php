@@ -44,12 +44,12 @@
 		        	echo "<tr>";
 		        }
 		        echo "<td>";
-		        	echo '<div class="normal"><img src="image/productos/'.$fila['imagen'].'" width="80px" height="80px"></div>';							
+		        	echo '<div class="normal"><img src="image/presentaciones/'.$fila['imagen'].'" width="160px" height="160px"></div>';							
 			        echo '<h3>'.$fila['producto'].'</h3>';
 			        echo '<span class="gamage">'.$fila['presentacion'].' '.$fila['unidad_medida'].'</span><br />';
 			        echo '<span class="p_real">$'.$fila['preciou'].'</span>';
-			        echo '<span class="descuento"></span><br />';
-			        echo '<span class="p_descuento">$'.$fila['cantidadm'].'</span><br />';
+			        echo '<span class="descuento"> -16%</span><br />';
+			        echo '<span class="p_descuento">Mayoreo: '.$fila['cantidadm'].'</span><br />';
 			        echo '<span class="p_mayoreo">$'.$fila['preciom'].'</span>';
 		        echo "</td>";
 		        $i++;

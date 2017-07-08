@@ -79,11 +79,26 @@ section{
 }
 
 #producto table{
-	margin: auto;
+	width: 100%;
+}
+
+#producto table tr{
+	width: 100%;
 }
 
 #producto table tr td{
-	padding: 20px;
+	width: 25%;
+}
+
+.normal {
+	width: 160px;
+	height: 160px;
+}
+
+.normal img{
+	width: auto;
+	height: auto;
+	margin: auto;
 }
 
 .gamage{
