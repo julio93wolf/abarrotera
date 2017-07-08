@@ -5,11 +5,13 @@
 			</section>
 			<aside>
 				<div id="destacados">
+					<h3>Más Vendidos</h3>
 					<?php
 						include('components/top5.php');
 					?>
 				</div>
 				<div id="nuevos">
+					<h3>Otros Articulos</h3>
 					<?php
 						include('components/rand5.php');
 					?>

@@ -1,7 +1,5 @@
 <?php
 	include('header.php');
-?>
-	Aqui va un slider
-<?php
+	include('components/promociones.php');
 	include('footer.php');
 ?>

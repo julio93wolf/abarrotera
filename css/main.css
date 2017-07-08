@@ -101,6 +101,15 @@ section{
 	margin: auto;
 }
 
+#promociones {
+	width: 100%;
+	float: left;
+}
+
+#promociones img{
+	width: 100%;
+}
+
 .gamage{
 	margin: auto;
 }

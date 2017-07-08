@@ -121,7 +121,7 @@ create table carrito_detalle(
 	descuento_aplicado numeric(10,2) not null
 );
 
-/*alter table presentacion add column imagen varchar (100) not null;*/
+alter table presentacion add column imagen varchar (100) not null;
 
 create user 'gerente'@'localhost' identified by '12345';
 grant all on abarrotera.* to 'gerente'@'localhost';

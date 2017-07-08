@@ -277,8 +277,9 @@ insert into carrito_detalle values (2,'SKU-HDZ000016',3,12.00,0);
 /*#							Promociones								#*/
 /*###################################################################*/
 
-insert into promocion values (null,'2017-7-3','2017-7-8','');
-insert into promocion values (null,'2017-7-15','2017-7-9','');
+insert into promocion values (null,'2017-7-3','2017-7-10','promocion_1.jpg');
+insert into promocion values (null,'2017-7-7','2017-7-20','promocion_2.jpg');
+insert into promocion values (null,'2017-7-7','2017-7-20','promocion_3.jpg');
 
 
 /*###################################################################*/
@@ -318,3 +319,5 @@ from promocion
 where now() between fechai and fechat;
 
 /*Promociones 680 X 300*/
+select imagen
+from promocion;
