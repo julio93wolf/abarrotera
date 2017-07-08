@@ -168,9 +168,9 @@ insert into presentacion values (11,'SKU-MCK000016','992',1,82,6,77.4);
 insert into presentacion values (12,'SKU-MCK000017','500',1,35,12,27.9);
 
 /*Atun en Agua*/
-insert into presentacion values (13,'SKU-NAI000001','130',1,15,24,12.7);
+insert into presentacion values (13,'SKU-NAI0000001','130',1,15,24,12.7);
 /*Atun en Aceite*/
-insert into presentacion values (14,'SKU-NAI000002','130',1,15,24,12.7);
+insert into presentacion values (14,'SKU-NAI0000002','130',1,15,24,12.7);
 
 /*Ensalada de Legumbres*/
 insert into presentacion values (15,'SKU-HDZ000001','400',1,13,24,10.8);
@@ -241,11 +241,44 @@ insert into carrito_detalle values (3,'SKU-HDZ000007',10,8.00,0);
 insert into carrito_detalle values (3,'SKU-HDZ000008',5,12.00,0);
 insert into carrito_detalle values (3,'SKU-HDZ000009',3,28.00,0);
 
+insert into promocion values (null,'2017-7-3','2017-7-8','');
+insert into promocion values (null,'2017-7-15','2017-7-9','');
 
-select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom
+drop view productos_view;
+create view productos_view as
+select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom,pre.imagen
 from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
 					inner join producto pro on pro.id_marca = mar.id_marca
                     inner join presentacion pre on pre.id_producto = pro.id_producto
                     inner join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
-where mar.id_marca=2;
-                    
+order by producto asc;
+
+use abarrotera;                    
+
+/*Top 5*/
+/*sku, id_producto, presentacion*/
+drop view top5_view;
+create view top5_view as
+select pro.producto,pre.presentacion,cd.sku, sum(cd.cantidad) as cantidad
+from carrito_detalle cd inner join presentacion pre on cd.sku = pre.sku
+						inner join producto pro on pre.id_producto = pro.id_producto
+group by 1,2,3 order by sum(cantidad) desc
+limit 5;
+
+/*5 productos random*/
+create view rand5_view as
+select pro.producto,pre.presentacion,cd.sku
+from carrito_detalle cd inner join presentacion pre on cd.sku = pre.sku
+						inner join producto pro on pre.id_producto = pro.id_producto
+group by 1,2,3 order by rand() desc
+limit 5;
+
+select * from rand5_view;
+
+select * from promocion;
+
+select *
+from promocion 
+where now() between fechai and fechat;
+
+/*Promociones 680 X 300*/
