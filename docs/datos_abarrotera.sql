@@ -321,3 +321,15 @@ where now() between fechai and fechat;
 /*Promociones 680 X 300*/
 select imagen
 from promocion;
+
+/*Agregar Descuento, Precio_Descuento, Precio_DescuentoMayoreo*/
+/* Funcion nvl sobrescribir a 0*/
+
+drop view  if exists productos_view;
+create view productos_view as
+select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom,pre.imagen
+from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
+					inner join producto pro on pro.id_marca = mar.id_marca
+                    inner join presentacion pre on pre.id_producto = pro.id_producto
+                    inner join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
+order by producto asc;
