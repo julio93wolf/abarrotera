@@ -125,3 +125,17 @@ alter table presentacion add column imagen varchar (100) not null;
 
 create user 'gerente'@'localhost' identified by '12345';
 grant all on abarrotera.* to 'gerente'@'localhost';
+
+create table comentario (
+	id_comentario int auto_increment,
+	id_cliente int,
+    nombre varchar (100) not null,
+    email varchar (100) not null,
+    tipo_comentario varchar (100) not null,
+    comentario text not null,
+    fecha date,
+    primary key (id_comentario),
+    foreign key (id_cliente) references cliente (id_cliente)
+);
+
+select * from comentario;

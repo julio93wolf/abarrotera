@@ -333,3 +333,20 @@ from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
                     inner join presentacion pre on pre.id_producto = pro.id_producto
                     inner join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
 order by producto asc;
+
+drop view  if exists vw_productos;
+
+use abarrotera;
+drop view vw_producto;
+create view vw_productos as
+select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom,pre.imagen,ifnull(prp.descuento,0) as descuento
+from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
+					left join producto pro on pro.id_marca = mar.id_marca
+                    right join presentacion pre on pre.id_producto = pro.id_producto
+                    left join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
+                    left join promocion_producto prp on prp.sku = pre.sku
+order by producto asc;
+
+select * from vw_productos;
+
+insert into promocion_producto values (null,'SKU-MCK000005',16);

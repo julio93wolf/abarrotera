@@ -84,10 +84,12 @@ section{
 
 #producto table tr{
 	width: 100%;
+	padding: 0px;
 }
 
 #producto table tr td{
 	width: 25%;
+	margin: 0px;
 }
 
 .normal {
@@ -96,9 +98,8 @@ section{
 }
 
 .normal img{
-	width: auto;
-	height: auto;
-	margin: auto;
+	width: 100%;
+	height: 100%;
 }
 
 #promociones {
