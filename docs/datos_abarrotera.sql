@@ -263,12 +263,12 @@ insert into sucursal values (null,'Cortazar');
 /*###################################################################*/
 /*#							Carritos de Venta						#*/
 /*###################################################################*/
-insert into carrito values (null,1,3,1,'2017-7-5');
+insert into carrito values (null,1,1,1,'2017-7-5');
 insert into carrito_detalle values (1,'SKU-MCK000001',10,15.00,0);
 insert into carrito_detalle values (1,'SKU-MCK000005',5,18.00,0);
 insert into carrito_detalle values (1,'SKU-HDZ000010',3,46.00,0);
 
-insert into carrito values (null,2,4,1,'2017-7-8');
+insert into carrito values (null,2,2,1,'2017-7-8');
 insert into carrito_detalle values (2,'SKU-HDZ000006',10,16.00,0);
 insert into carrito_detalle values (2,'SKU-HDZ000013',5,15.00,0);
 insert into carrito_detalle values (2,'SKU-HDZ000016',3,12.00,0);
@@ -281,72 +281,7 @@ insert into promocion values (null,'2017-7-3','2017-7-10','promocion_1.jpg');
 insert into promocion values (null,'2017-7-7','2017-7-20','promocion_2.jpg');
 insert into promocion values (null,'2017-7-7','2017-7-20','promocion_3.jpg');
 
-
 /*###################################################################*/
-/*#							Vistas									#*/
+/*#						Promocion Producto							#*/
 /*###################################################################*/
-
-/* Productos */
-drop view  if exists productos_view;
-create view productos_view as
-select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom,pre.imagen
-from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
-					inner join producto pro on pro.id_marca = mar.id_marca
-                    inner join presentacion pre on pre.id_producto = pro.id_producto
-                    inner join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
-order by producto asc;
-
-/* Top 5 más vendidos */
-drop view if exists top5_view;
-create view top5_view as
-select pro.producto,pre.presentacion,cd.sku, sum(cd.cantidad) as cantidad
-from carrito_detalle cd inner join presentacion pre on cd.sku = pre.sku
-						inner join producto pro on pre.id_producto = pro.id_producto
-group by 1,2,3 order by sum(cantidad) desc
-limit 5;
-
-/* 5 productos recomendados random */
-drop view if exists rand5_view;
-create view rand5_view as
-select pro.producto,pre.presentacion,cd.sku
-from carrito_detalle cd inner join presentacion pre on cd.sku = pre.sku
-						inner join producto pro on pre.id_producto = pro.id_producto
-group by 1,2,3 order by rand() desc
-limit 5;
-
-select *
-from promocion 
-where now() between fechai and fechat;
-
-/*Promociones 680 X 300*/
-select imagen
-from promocion;
-
-/*Agregar Descuento, Precio_Descuento, Precio_DescuentoMayoreo*/
-/* Funcion nvl sobrescribir a 0*/
-
-drop view  if exists productos_view;
-create view productos_view as
-select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom,pre.imagen
-from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
-					inner join producto pro on pro.id_marca = mar.id_marca
-                    inner join presentacion pre on pre.id_producto = pro.id_producto
-                    inner join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
-order by producto asc;
-
-drop view  if exists vw_productos;
-
-use abarrotera;
-drop view vw_producto;
-create view vw_productos as
-select cat.id_categoria,cat.categoria,mar.id_marca,pro.id_producto,pro.producto,pre.sku,pre.presentacion,um.id_unidad_medida,um.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom,pre.imagen,ifnull(prp.descuento,0) as descuento
-from categoria cat inner join marca mar on cat.id_categoria = mar.id_categoria
-					left join producto pro on pro.id_marca = mar.id_marca
-                    right join presentacion pre on pre.id_producto = pro.id_producto
-                    left join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
-                    left join promocion_producto prp on prp.sku = pre.sku
-order by producto asc;
-
-select * from vw_productos;
-
-insert into promocion_producto values (null,'SKU-MCK000005',16);
+insert into promocion_producto values (1,'SKU-MCK000005',16);
