@@ -1,5 +1,5 @@
 <?php
-	include('../abarrotera.class.php');
+	include_once('../abarrotera.class.php');
 	include('../header.php');
 	$datos=$abarrotera->consultar("select * from producto pro join marca mar on pro.id_marca=mar.id_marca order by pro.producto asc");
 

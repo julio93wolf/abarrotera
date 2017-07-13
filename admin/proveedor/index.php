@@ -1,5 +1,5 @@
 <?php
-	include('../abarrotera.class.php');
+	include_once('../abarrotera.class.php');
 	include('../header.php');
 	$datos=$abarrotera->consultar("select * from proveedor order by proveedor asc");
 	echo '<a class="btn btn-success" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
