@@ -6,8 +6,11 @@
 		$mensaje='Se inserto el nuevo rol';
 		$color='success';
 		$icon='glyphicon glyphicon-ok';
-		include ('index.php');
-	}else{
+		if($_POST['enviar']=="Guardar y Regresar"){
+			include('index.php');
+			die();
+		}
+	}
 		include('../header.php');
 ?>
 <h1>Nuevo Rol</h1>
@@ -17,11 +20,11 @@
 	    <label for="in_Rol">Rol</label>
 	    <input type="text" name="rol" class="form-control" id="in_Rol" placeholder="Rol">
   	</div>
-	<button type="submit" name="enviar" class="btn btn-primary">Guardar</button>
-	<button type="submit" name="enviar" class="btn btn-primary">Guardar y regresar</button>
+	<button type="submit" name="enviar" value="Guardar" class="btn btn-primary">Guardar</button>
+	<button type="submit" name="enviar" value="Guardar y Regresar" class="btn btn-info">Guardar y regresar</button>
 </form>
 
 <?php
-	}
+	
 	include('../footer.php');
 ?>

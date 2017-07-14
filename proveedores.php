@@ -3,7 +3,6 @@
 ?>
 	<h1>Proveedores</h1>
 	<?php
-		include("config.php");
 		foreach($conexion->query('select * from proveedor') as $fila) {
 	        echo '<img src="image/proveedores/'.$fila['logo'].'" alt="'.$fila['proveedor'].'" />';
 	    }

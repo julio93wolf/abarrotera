@@ -5,6 +5,7 @@
 		
 			function __construct(){
 				include ('../../config.php');
+				$this->configuracion=$configuracion;
 				$this->conexion=$conexion;
 			}
 
@@ -45,7 +46,7 @@
 				try{
 					$statement=$this->conexion->prepare($sql);
 					foreach ($parametros as $key => $value) {
-						$statement->bindParam(':'.$key,$value);
+						$statement->bindValue(':'.$key,$value);
 					}
 					return $statement->execute();
 				}catch (PDOException $e) {
@@ -86,6 +87,14 @@
 					die();
 				}
 			}// Funcion Borrar
+
+			function validarImagen($imagen){
+				
+				if(in_array($imagen['type'],$this->configuracion['imagenes_permitidas'])){
+					return true;
+				}
+				return false;
+			}
 
 		}// Class Abarrotera
 
