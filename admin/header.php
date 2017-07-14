@@ -14,7 +14,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
@@ -36,13 +36,13 @@
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Catalogos <span class="caret"></span></a>
 	          <ul class="dropdown-menu">
-	            <li><a href="#">Catergorias</a></li>
-	            <li><a href="#">Marcas</a></li>
-	            <li><a href="#">Proveedores</a></li>
-	            <li><a href="#">Sucursales</a></li>
-	            <li><a href="#">Unidades de Medida</a></li>
+	            <li><a href="/abarrotera/admin/categoria">Catergorias</a></li>
+	            <li><a href="/abarrotera/admin/marca">Marcas</a></li>
+	            <li><a href="/abarrotera/admin/proveedor">Proveedores</a></li>
+	            <li><a href="/abarrotera/admin/sucursal">Sucursales</a></li>
+	            <li><a href="/abarrotera/admin/unidad_medida">Unidades de Medida</a></li>
 	           	<li role="separator" class="divider"></li>
-	            <li><a href="#">Roles</a></li>
+	            <li><a href="/abarrotera/admin/rol">Roles</a></li>
 	          </ul>
 	        </li>
 	      </ul>
@@ -68,7 +68,7 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 	<?php
-		if(isset($mensaje) and isset($color)){
-			echo '<div class="alert alert-'.$color.'" role="alert">'.$mensaje.'</div>';
+		if(isset($mensaje) and isset($color) and isset($icon)){
+			echo '<div class="alert alert-'.$color.' alert-dismissible" role="alert"><span class="glyphicon '.$icon.'" aria-hidden="true"></span> '.$mensaje.'</div>';
 		}
 	?>

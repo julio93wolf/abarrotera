@@ -2,7 +2,7 @@
 	include_once('../abarrotera.class.php');
 	include('../header.php');
 	$datos=$abarrotera->consultar("select * from proveedor order by proveedor asc");
-	echo '<a class="btn btn-success" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
+	echo '<a class="btn btn-success" href="nuevo.php?" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
 	echo '<table class="table table-hover">';
 	echo '<tr>';
 	echo '<th>Proveedor</th>';

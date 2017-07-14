@@ -1,9 +1,9 @@
 <?php
 	include_once('../abarrotera.class.php');
 	include('../header.php');
-	$datos=$abarrotera->consultar("select cli.id_cliente,cli.id_usuario,concat(cli.nombre,' ',cli.apaterno,' ',amaterno) as nom_cliente,usr.correo from cliente cli join usuario usr on cli.id_usuario=usr.id_usuario order by nom_cliente asc");
+	$datos=$abarrotera->consultar("select cli.id_cliente,cli.id_usuario,concat(cli.nombre,' ',ifnull(cli.apaterno,''),' ',ifnull(cli.amaterno,'')) as nom_cliente,usr.correo from cliente cli join usuario usr on cli.id_usuario=usr.id_usuario order by nom_cliente asc");
 
-	echo '<a class="btn btn-success" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
+	echo '<a class="btn btn-success" href="nuevo.php?" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
 	echo '<table class="table table-hover">';
 	echo '<tr>';
 	echo '<th>Nombre</th>';

@@ -1,7 +1,7 @@
 <?php
 	include_once('../abarrotera.class.php');
 	include('../header.php');
-	$datos=$abarrotera->consultar("select * from unidad_medida;");
+	$datos=$abarrotera->consultar("select * from unidad_medida order by unidad_medida");
 	echo '<a class="btn btn-success" href="nuevo.php" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
 	echo '<table class="table table-hover">';
 	echo '<tr>';

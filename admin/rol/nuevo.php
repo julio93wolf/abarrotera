@@ -1,20 +1,20 @@
 <?php
 	include_once('../abarrotera.class.php');
 	if (isset($_POST['enviar'])) {
-		$parametros['unidad_medida']=$_POST['unidad_medida'];
-		$abarrotera->insertar('unidad_medida',$parametros);	
-		$mensaje='Se inserto la unida de medida';
+		$parametros['rol']=$_POST['rol'];
+		$abarrotera->insertar('rol',$parametros);	
+		$mensaje='Se inserto el nuevo rol';
 		$color='success';
 		$icon='glyphicon glyphicon-ok';
 	}
 	include('../header.php');
 ?>
-<h1>Nueva Unidad de Medida</h1>
+<h1>Nuevo Rol</h1>
 
 <form action="nuevo.php" method="POST">
 	<div class="form-group">
-	    <label for="in_UnidadMedida">Unidad de Medida</label>
-	    <input type="text" name="unidad_medida" class="form-control" id="in_UnidadMedida" placeholder="Unidad de Medida">
+	    <label for="in_Rol">Rol</label>
+	    <input type="text" name="rol" class="form-control" id="in_Rol" placeholder="Rol">
   	</div>
 	<button type="submit" name="enviar" class="btn btn-primary">Guardar</button>
 	<button type="submit" name="enviar" class="btn btn-primary">Guardar y regresar</button>

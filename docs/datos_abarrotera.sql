@@ -225,6 +225,7 @@ insert into presentacion values (26,'SKU-HDZ000016','210',1,12,24,8.8,'SKU-HDZ00
 /*###################################################################*/
 insert into rol values (null,'Cliente');
 insert into rol values (null,'Administrador');
+insert into rol values (null,'Tecnicos');
 
 /*###################################################################*/
 /*#							Usuarios								#*/
@@ -259,6 +260,7 @@ insert into empleado values (null,4,'Alfonso',null,null);
 /*###################################################################*/
 insert into sucursal values (null,'Celaya');
 insert into sucursal values (null,'Cortazar');
+insert into sucursal values (null,'Queretaro');
 
 /*###################################################################*/
 /*#							Carritos de Venta						#*/

@@ -3,7 +3,7 @@
 	include('../header.php');
 	$datos=$abarrotera->consultar("select * from marca mar join proveedor pro on mar.id_proveedor=pro.id_proveedor join categoria cat on mar.id_categoria=cat.id_categoria order by mar.marca asc");
 
-	echo '<a class="btn btn-success" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
+	echo '<a class="btn btn-success" href="nuevo.php?" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
 	echo '<table class="table table-hover">';
 	echo '<tr>';
 	echo '<th>Marca</th>';

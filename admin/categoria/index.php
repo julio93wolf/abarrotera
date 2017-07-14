@@ -1,8 +1,8 @@
 <?php
 	include_once('../abarrotera.class.php');
 	include('../header.php');
-	$datos=$abarrotera->consultar("select * from categoria");
-	echo '<a class="btn btn-success" href="#" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
+	$datos=$abarrotera->consultar("select * from categoria order by categoria asc");
+	echo '<a class="btn btn-success" href="nuevo.php?" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
 	echo '<table class="table table-hover">';
 	echo '<tr>';
 	echo '<th>Categoria</th>';
