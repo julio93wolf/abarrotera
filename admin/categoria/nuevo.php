@@ -6,8 +6,9 @@
 		$mensaje='Se inserto la nueva categoria';
 		$color='success';
 		$icon='glyphicon glyphicon-ok';
-	}
-	include('../header.php');
+		include ('index.php');
+	}else{
+		include('../header.php');
 ?>
 <h1>Nueva Categoria</h1>
 
@@ -21,5 +22,6 @@
 </form>
 
 <?php
+	}
 	include('../footer.php');
 ?>

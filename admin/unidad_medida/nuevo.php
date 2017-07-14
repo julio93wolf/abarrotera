@@ -6,8 +6,9 @@
 		$mensaje='Se inserto la unida de medida';
 		$color='success';
 		$icon='glyphicon glyphicon-ok';
-	}
-	include('../header.php');
+		include ('index.php');
+	}else{
+		include('../header.php');
 ?>
 <h1>Nueva Unidad de Medida</h1>
 
@@ -22,4 +23,5 @@
 
 <?php
 	include('../footer.php');
+	}
 ?>
