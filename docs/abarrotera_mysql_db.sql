@@ -83,7 +83,7 @@ create table rol(
 create table usuario(
 	id_usuario int auto_increment,
 	correo varchar (100) not null unique,
-	contraseña varchar (32) not null,
+	contrasena varchar (32) not null,
     primary key (id_usuario)
 );
 
