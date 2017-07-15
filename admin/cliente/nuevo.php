@@ -37,7 +37,7 @@
 			}
 		}
 	}
-		include('../header.php');
+	include('../header.php');
 ?>
 <h1>Nuevo Cliente</h1>
 <form action="nuevo.php" method="POST" enctype="multipart/form-data">
