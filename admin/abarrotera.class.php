@@ -4,6 +4,10 @@
 		class Abarrotera{
 		
 			function __construct(){
+				echo "´<pre>";	
+				print_r($_SERVER);
+				echo "´<pre>";
+				die();
 				include ('../../config.php');
 				$this->configuracion=$configuracion;
 				$this->conexion=$conexion;
@@ -61,14 +65,21 @@
 			function actualizar($tabla, $parametros, $llaves){
 				$datos = array_keys($parametros);
 				$keys = array_keys($llaves);
-				array_walk($datos, function(&$item){$item=$item.'=:'.$item;});
-				array_walk($keys, function(&$item){$item=$item.'=:'.$item;});
+				array_walk($datos, function(&$item){$item=$item.'=?';});
+				array_walk($keys, function(&$item){$item=$item.'=?';});
 				$sql = 'update '.$tabla.' set '.implode(",",$datos).' where '.implode(" and ", $keys).'';
-				echo $sql; die();
+				//echo $sql; die();
 				try{
 					$statement=$this->conexion->prepare($sql);
+					$i=1;
 					foreach ($parametros as $key => $value) {
-						$statement->bindValue(':'.$key, $value);
+						$statement->bindParam($i, $value);
+						$i++;
+					}
+					$i=1;
+					foreach ($llaves as $key => $value) {
+						$statement->bindParam($i, $value);
+						$i++;
 					}
 					return $statement->execute();	
 				}catch (Exception $e){

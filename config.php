@@ -10,5 +10,5 @@
 	/*Variables del sistema*/
 	$configuracion['imagenes_permitidas'] = array('image/jpeg','image/pjpeg','image/png','image/gif');
 
-
+	define('PATH','c:/XAMPP/htdocs/abarrotera/');
 ?>
