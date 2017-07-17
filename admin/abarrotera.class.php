@@ -74,7 +74,6 @@
 				}catch (Exception $e){
 					echo 'La exception: '. $e->getMessage(). '\n';
 				}
-
 			}
 
 			/*
@@ -106,7 +105,6 @@
 			}// Funcion Borrar
 
 			function validarImagen($imagen){
-				
 				if(in_array($imagen['type'],$this->configuracion['imagenes_permitidas'])){
 					return true;
 				}
@@ -124,7 +122,7 @@
 					}
 					$select.='<option value="'.$datos[$key]['id'].'" '.$selected.'>'.$datos[$key]['opcion'].'</option>';
 				}
-				$select.='/<select>';
+				$select.='</select>';
 				return $select;
 			}
 

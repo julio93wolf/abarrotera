@@ -9,9 +9,9 @@
 		header('Location: /abarrotera/admin/producto/');
 	}
 	$datos=$abarrotera->consultar("select pre.sku,pro.producto,pre.presentacion,ume.unidad_medida,pre.preciou,pre.cantidadm,pre.preciom from presentacion pre join producto pro on pre.id_producto = pro.id_producto join unidad_medida ume on pre.id_unidad_medida = ume.id_unidad_medida".$where,$parametros);
-
 	echo '<a class="btn btn-success" href="nuevo.php?id_producto='.$parametros['id_producto'].'" role="button"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nuevo</a>';
 ?>
+<a class="btn btn-info" href="/abarrotera/admin/producto" role="button"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Regresar</a>
 <table class="table table-hover">
 	<tr>
 		<th>SKU</th>
@@ -21,9 +21,9 @@
 		<th>Precio Unitario</th>
 		<th>Cantidad Mayore</th>
 		<th>Precio Mayoreo</th>
-		<th>Editar</th>
-		<th>Eliminar</th>
-	</tr>';
+		<th></th>
+		<th></th>
+	</tr>
 	<?php
 	foreach ($datos as $key => $value) {
 		echo '<tr>';
