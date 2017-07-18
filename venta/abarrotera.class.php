@@ -1,6 +1,5 @@
 <?php
-	include_once('../../abarrotera.class.php');
-
+	include_once('../../admin/abarrotera.class.php');
 	/*
 	class Cliente extends Abarrotera{
 		function __construct(){

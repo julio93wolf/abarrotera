@@ -18,6 +18,12 @@
 					$parametros['domicilio']=$_POST['domicilio'];
 					$parametros['foto']=$_FILES['foto']['name'];
 					$abarrotera->insertar('cliente',$parametros);
+
+					$paraUserRol=array();
+					$paraUserRol['id_usuario']=$datos[0]['id_usuario'];
+					$paraUserRol['id_rol']=1;
+					$abarrotera->insertar('usuario_rol',$paraUserRol);
+
 					$mensaje='Se inserto el cliente';
 					$color='success';
 					$icon='glyphicon glyphicon-ok';

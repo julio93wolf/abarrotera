@@ -4,7 +4,7 @@
 		class Abarrotera{
 		
 			function __construct(){
-				include ('../../config.php');
+				include ($_SERVER['DOCUMENT_ROOT'].'/abarrotera/config.php');
 				$this->configuracion=$configuracion;
 				$this->conexion=$conexion;
 			}
@@ -127,6 +127,20 @@
 				}
 				$select.='</select>';
 				return $select;
+			}
+
+			function guardia($rolPermitido){
+				if (isset($_SESSION['usrValido'])) {
+					if ($_SESSION['usrValido']) {
+						foreach ($_SESSION['usrRol'] as $rolUsr) {
+							if (in_array($rolUsr,$rolPermitido)) {
+								echo "Si se encontro el rol";
+							}else{
+								echo "No se encontro el rol";
+							}
+						}
+					}
+				}
 			}
 
 		}// Class Abarrotera

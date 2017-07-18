@@ -1,4 +1,6 @@
 <?php
+	session_start();
+
 	/*Configuración de la base de datos - Conexion*/
 	define('USER','gerente');
 	define('PASSWORD','12345');
@@ -10,5 +12,4 @@
 	/*Variables del sistema*/
 	$configuracion['imagenes_permitidas'] = array('image/jpeg','image/pjpeg','image/png','image/gif');
 
-	define('PATH','c:/XAMPP/htdocs/abarrotera/');
 ?>
