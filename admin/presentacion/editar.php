@@ -1,12 +1,14 @@
 <?php
 	include_once('../abarrotera.class.php');
-	if(isset($_REQUEST['sku'])){
-		$sku['sku']=$_REQUEST['sku'];
+	if(isset($_REQUEST['sku_ant'])){
+		$sku['sku']=$_REQUEST['sku_ant'];
+		$datos=$abarrotera->consultar("select * from presentacion where sku=:sku",$sku);
+		$unidad = $abarrotera->dropDownList('select id_unidad_medida as id,unidad_medida as opcion from unidad_medida order by unidad_medida asc','id_unidad_medida',$datos[0]['id_unidad_medida']);
 	}else{
 		header('Location: /abarrotera/admin/producto/');
 	}
-	if (isset($_REQUEST['enviar'])) {
-		$llaves['sku']=$_POST['sku_anterior'];
+	if (isset($_POST['enviar'])) {
+		$llaves['sku']=$_POST['sku_ant'];
 		if(!empty($_FILES['imagen']['name'])){
 			$extension=explode('.',$_FILES['imagen']['name']);
 			$origen=$_FILES['imagen']['tmp_name'];
@@ -51,9 +53,6 @@
 			include('index.php');
 			die();
 		}
-	}else{
-		$datos=$abarrotera->consultar("select * from presentacion where sku=:sku",$sku);
-		$unidad = $abarrotera->dropDownList('select id_unidad_medida as id,unidad_medida as opcion from unidad_medida order by unidad_medida asc','id_unidad_medida',$datos[0]['id_unidad_medida']);
 	}
 	include('../header.php');
 ?>
@@ -90,10 +89,13 @@
     <input type="file" id="in_Imagen" name="imagen" class="form-control">
     <p class="help-block">Solo soporta archivos .jpg, .png y .gif</p>
   </div>
-	<input type="hidden" name="id_producto" value="<?php echo $datos[0]['id_producto']; ?>">
-	<input type="hidden" name="sku_anterior" value="<?php echo $datos[0]['sku']; ?>">
+  
 	<button type="submit" name="enviar" value="Guardar" class="btn btn-primary">Guardar</button>
 	<button type="submit" name="enviar" value="Guardar y Regresar" class="btn btn-info">Guardar y regresar</button>
+	<a class="btn btn-danger pull-rigth" href="index.php?id_producto=<?php echo $datos[0]['id_producto']; ?>">Cancelar</a>
+	
+	<input type="hidden" name="id_producto" value="<?php echo $datos[0]['id_producto']; ?>">
+	<input type="hidden" name="sku_ant" value="<?php echo $datos[0]['sku']; ?>">
 </form>
 
 <?php

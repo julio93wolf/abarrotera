@@ -1,6 +1,5 @@
 <?php
 	include_once('../abarrotera.class.php');
-		
 	if (isset($_REQUEST['id_producto'])) {
 		$parametros['id_producto']=$_REQUEST['id_producto'];
 		$productos = $abarrotera->dropDownList('select id_producto as id,producto as opcion from producto order by producto asc','id_producto',$parametros['id_producto']);
