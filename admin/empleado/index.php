@@ -1,5 +1,7 @@
 <?php
 	include_once('../abarrotera.class.php');
+	$rol[0]='Administrador';
+	$abarrotera->guardia($rol);
 	include('../header.php');
 	$datos=$abarrotera->consultar("select emp.id_empleado,usr.id_usuario,concat(emp.nombre,' ',ifnull(emp.apaterno,''),' ',ifnull(emp.amaterno,'')) as nom_cliente,usr.correo from empleado emp join usuario usr on emp.id_usuario=usr.id_usuario order by nom_cliente asc");
 

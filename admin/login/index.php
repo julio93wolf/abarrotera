@@ -12,9 +12,11 @@
 				$id_usuario=$datoUsuario[0]['id_usuario'];
 				$paraRol['id_usuario']=$id_usuario;
 				$datoRol=$abarrotera->consultar('select rol from rol join usuario_rol using (id_rol) where id_usuario=:id_usuario',$paraRol);
+
 				unset($_SESSION['usrValido']);
 				unset($_SESSION['usrDatos']);
 				unset($_SESSION['usrRol']);
+				
 				$_SESSION['usrValido']=true;
 				$_SESSION['usrDatos']=$datoUsuario[0];
 				$contRol=0;
@@ -22,7 +24,7 @@
 					$_SESSION['usrRol'][$contRol]=$datoRol[$contRol]['rol'];
 					$contRol++;
 				}
-				header('Location: ../cliente/index.php');
+				header('Location: ../empleado/index.php');
 				die();
 			}else{
 				$mensaje='Correo o Contraseña incorrecta';
@@ -68,11 +70,8 @@
 	    <label for="in_Password">Contraseña</label>
 	    <input type="password" required name="contrasena" class="form-control" id="in_Password" placeholder="Contraseña">
   	</div>
-  	<div class="form-group">
-	    <button type="submit" name="login" value="Login" class="btn btn-primary">Login</button>
-			<a class="btn btn-primary" href="../registro" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Registrarse</a>
-			<a class="btn btn-primary pull-right" href="recuperar.php" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Recuperar Contraseña</a>
-  	</div>
+	<button type="submit" name="login" value="Login" class="btn btn-primary">Login</button>
+	<a class="btn btn-primary" href="../registro" role="button"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Registrarse</a>
 </form>
 <?php
 	include('../footer.php');
