@@ -44,9 +44,7 @@
   </div>
   <div class="form-group">
 	    <label for="in_UnidadMedida">Unidad de Medida</label>
-	    <?php
-	    	echo $unidad;
-	    ?>
+	    <?php echo $unidad; ?>
   </div>
   <div class="form-group">
 		<label for="in_PrecioUnitario">Precio Unitario</label>
