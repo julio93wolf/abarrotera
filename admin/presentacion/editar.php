@@ -12,7 +12,7 @@
 		if(!empty($_FILES['imagen']['name'])){
 			$extension=explode('.',$_FILES['imagen']['name']);
 			$origen=$_FILES['imagen']['tmp_name'];
-			$destino='../../image/presentaciones/'.$sku['sku'].'.'.$extension[count(-1)];
+			$destino='../../image/presentaciones/'.$sku['sku'].'.'.$extension[1];
 			if($abarrotera->validarImagen($_FILES['imagen'])){
 				if(move_uploaded_file($origen,$destino)){
 					$parametros['id_producto']=$_POST['id_producto'];
@@ -87,7 +87,7 @@
   <div class="form-group">
     <label for="in_Imagen">Imagen</label>
     <input type="file" id="in_Imagen" name="imagen" class="form-control">
-    <p class="help-block">Solo soporta archivos .jpg, .png y .gif</p>
+    <p class="help-block">Solo archivos .jpg, .png y .gif</p>
   </div>
   
 	<button type="submit" name="enviar" value="Guardar" class="btn btn-primary">Guardar</button>
