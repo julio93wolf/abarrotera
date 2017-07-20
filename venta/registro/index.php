@@ -46,7 +46,7 @@
 	include('../header.php');
 ?>
 <h1>Nuevo Cliente</h1>
-<form action="nuevo.php" method="POST" enctype="multipart/form-data">
+<form action="index.php" method="POST" enctype="multipart/form-data">
 		<div class="form-group">
 	    <label for="in_nombre">Nombre</label>
 	    <input type="text" name="nombre" class="form-control" id="in_nombre" placeholder="Nombre">

@@ -209,7 +209,8 @@ select
     pre.preciou,
     pre.cantidadm,
     pre.preciom,
-    pre.imagen,ifnull(prp.descuento,0) as descuento,
+    pre.imagen,
+    ifnull(prp.descuento,0) as descuento,
     cast(pre.preciou-(pre.preciou*(ifnull(prp.descuento,0))/100) as decimal(10,2)) as preciou_descuento,
     cast(pre.preciom-(pre.preciom*(ifnull(prp.descuento,0))/100) as decimal(10,2)) as preciom_descuento
 from 
@@ -220,3 +221,6 @@ from
     left join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
     left join promocion_producto prp on prp.sku = pre.sku
 order by producto asc;
+
+use abarrotera;
+alter table usuario add llave varchar (96);
