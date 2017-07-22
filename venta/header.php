@@ -35,6 +35,7 @@
 	      <ul class="nav navbar-nav">
 	        <li><a href="/abarrotera/venta/producto">Productos</a></li>
 	        <li><a href="/abarrotera/venta/promociones">Promociones</a></li>
+	        <li><a href="/abarrotera/venta/producto/carrito.php">Carrito</a></li>
 	      </ul>
 
 	      <ul class="nav navbar-nav navbar-right">

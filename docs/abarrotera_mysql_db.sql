@@ -224,3 +224,5 @@ order by producto asc;
 
 use abarrotera;
 alter table usuario add llave varchar (96);
+
+select car.id_carrito,cli.id_cliente,concat(cli.nombre,' ',ifnull(cli.apaterno,''),' ',ifnull(cli.amaterno,'')) as nom_cliente,concat(emp.nombre,' ',ifnull(emp.apaterno,''),' ',ifnull(emp.amaterno,'')) as nom_empleado,suc.sucursal,car.fecha,det.sku,pro.producto,pre.presentacion,det.cantidad,det.precio_unitario,det.descuento_aplicado from carrito car inner join cliente cli on cli.id_cliente = car.id_cliente inner join empleado emp on emp.id_empleado = car.id_empleado inner join sucursal suc on suc.id_sucursal = car.id_sucursal inner join carrito_detalle det on det.id_carrito = car.id_carrito inner join presentacion pre on pre.sku = det.sku inner join producto pro on pro.id_producto = pre.id_producto

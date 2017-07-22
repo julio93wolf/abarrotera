@@ -9,7 +9,6 @@
 	<table class="table table-hover">
 		<tr class="active">
 			<th>Cantidad</th>
-			<th></th>
 			<th>SKU</th>
 			<th>Producto</th>
 			<th>Presentacion</th>
@@ -22,7 +21,6 @@
 			foreach ($datoProducto as $key => $value) {
 				echo '<tr>';
 					echo '<td><input type="text" name="carrito['.$value['sku'].']" /></td>';
-					echo '<td><img src="../../image/presentaciones/'.$value['imagen'].'" class="img-responsive center-block" alt="'.$value['sku'].'" /></td>';
 					echo '<td>'.$value['sku'].'</td>';
 					echo '<td>'.$value['producto'].'</td>';
 					echo '<td>'.$value['presentacion'].'</td>';
