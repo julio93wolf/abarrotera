@@ -7,7 +7,7 @@
 			if (isset($_POST['enviar'])) {
 				$llaveUsuario['llave']=$_POST['llave'];
 				$paraUsuario['contrasena']=md5($_POST['contrasena']);
-				$paraUsuario['llave']='';
+				$paraUsuario['llave']='null';
 				$abarrotera->actualizar('usuario',$paraUsuario,$llaveUsuario);
 				header('Location: /abarrotera/venta/login/index.php');
 			}

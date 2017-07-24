@@ -28,7 +28,6 @@
 					echo '<td>'.$value['preciou'].'</td>';
 					echo '<td>'.$value['cantidadm'].'</td>';
 					echo '<td>'.$value['preciom'].'</td>';
-
 				echo '</tr>';
 			}
 		?>
