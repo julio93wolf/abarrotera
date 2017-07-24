@@ -1,13 +1,12 @@
 <?php
 	if(!class_exists('Abarrotera')){
 		class Abarrotera{
-		
+			var $rowChange=null;
 			function __construct(){
 				include ($_SERVER['DOCUMENT_ROOT'].'/abarrotera/config.php');
 				$this->configuracion=$configuracion;
 				$this->conexion=$conexion;
 			}
-
 			/*
 			* Método generico para realizar consultas en la base de datos
 			*/
@@ -22,7 +21,6 @@
 				$datos=$statement->fetchAll();
 				return $datos;
 			}
-
 			/*
 			* Método generico para insertar registros en la base de datos
 			*/
@@ -47,13 +45,13 @@
 					foreach ($parametros as $key => $value) {
 						$statement->bindValue(':'.$key,$value);
 					}
-					return $statement->execute();
+					$statement->execute();
+					$this->rowChange=$statement->rowCount();
 				}catch (PDOException $e) {
 					print "¡Error!: " . $e->getMessage() . "<br/>";
 					die();
 				}
 			}//Funcion Insertar
-
 			/*
 			* Método generico para actualizar registos en la base de datos
 			*/
@@ -67,17 +65,16 @@
 					$statement=$this->conexion->prepare($sql);
 					foreach ($parametros as $key => $value) {
 						$statement->bindValue(':'.$key, $value);
-						
 					}
 					foreach ($llaves as $key => $value) {
 						$statement->bindValue(':'.$key, $value);
 					}
-					return $statement->execute();	
+					$statement->execute();	
+					$this->rowChange=$statement->rowCount();
 				}catch (Exception $e){
 					echo 'La exception: '. $e->getMessage(). '\n';
 				}
 			}
-
 			/*
 			* Método generico para eliminar registros en la base de datos
 			*/
@@ -99,20 +96,19 @@
 					foreach ($parametros as $key => $value) {
 						$statement->bindParam(':'.$key,$value);
 					}
-					return $statement->execute();
+					$statement->execute();
+					$this->rowChange=$statement->rowCount();
 				}catch (PDOException $e) {
 					print "¡Error!: " . $e->getMessage() . "<br/>";
 					die();
 				}
 			}// Funcion Borrar
-
 			function validarImagen($imagen){
 				if(in_array($imagen['type'],$this->configuracion['imagenes_permitidas'])){
 					return true;
 				}
 				return false;
 			}
-
 			function dropDownList($sql,$nombre,$id_seleccionado=null){
 				$datos=$this->consultar($sql);
 				$select='<select class="form-control" name="'.$nombre.'">';
@@ -127,7 +123,6 @@
 				$select.='</select>';
 				return $select;
 			}
-
 			function guardia($rolPermitido){
 				if (isset($_SESSION['usrValido'])) {
 					if ($_SESSION['usrValido']) {
@@ -150,9 +145,7 @@
 					header('Location: /abarrotera/venta/login/index.php?error='.$error);
 				}
 			}
-
 		}// Class Abarrotera
-
 	}// if(include_once)
 	$abarrotera= new Abarrotera;
 ?>
