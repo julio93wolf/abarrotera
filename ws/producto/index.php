@@ -8,60 +8,63 @@
 			$json=file_get_contents('php://input');
 			$json=json_decode($json);
 			foreach ($json as $key => $value) {
-				$param['marca']=$value->marca;
-				$param['id_proveedor']=$value->id_proveedor;
-				$param['id_categoria']=$value->id_categoria;
-				$abarrotera->insertar('marca',$param);
+				$param['producto']=$value->producto;
+				$param['id_marca']=$value->id_marca;
+				$abarrotera->insertar('producto',$param);
 				if ($abarrotera->rowChange>0) {
-					$json=array('mensaje'=>'Se inserto la nueva marca');
+					$json=array('mensaje'=>'Se inserto el nuevo producto');
 				}else{
-					$json=array('mensaje'=>'No se pudo insertar la marca');
+					$json=array('mensaje'=>'No se pudo insertar el producto');
 				}
 			}
 			break;
 		case 'PUT':
-			if (isset($_GET['id_marca'])) {
+			if (isset($_GET['id_producto'])) {
 				$json=file_get_contents('php://input');
 				$json=json_decode($json);
-				$llave['id_marca']=$_GET['id_marca'];
+				$llave['id_producto']=$_GET['id_producto'];
 				foreach ($json as $key => $value) {
-					$param['marca']=$value->marca;
-					$param['id_proveedor']=$value->id_proveedor;
-					$param['id_categoria']=$value->id_categoria;
-					$abarrotera->actualizar('marca',$param,$llave);
+					$param['producto']=$value->producto;
+					$param['id_marca']=$value->id_marca;
+					$abarrotera->actualizar('producto',$param,$llave);
 					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se actualizo la marca');
+						$json=array('mensaje'=>'Se actualizo el producto');
 					}else{
-						$json=array('mensaje'=>'No se pudo actualizar la marca');
+						$json=array('mensaje'=>'No se pudo actualizar el producto');
 					}
 				}
 			}else{
-				$json=array('mensaje'=>'ID de la marca es obligatorío!!!');
+				$json=array('mensaje'=>'ID de la producto es obligatorío!!!');
 			}
 			break;
 		case 'DELETE':
-				if (isset($_GET['id_marca'])) {
-					$param['id_marca']=$_GET['id_marca'];
-					$abarrotera->borrar('marca',$param);
-					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se elimino la marca');
+				if (isset($_GET['id_producto'])) {
+					$param['id_producto']=$_GET['id_producto'];					
+					$abarrotera->consultar('select * from presentacion where id_producto=:id_producto',$param);
+					if ($abarrotera->rowChange==0) {
+						$abarrotera->borrar('producto',$param);
+						if ($abarrotera->rowChange>0) {
+							$json=array('mensaje'=>'Se elimino la producto');
+						}else{
+							$json=array('mensaje'=>'La producto no existe');
+						}
 					}else{
-						$json=array('mensaje'=>'La marca no existe');
+						$json=array('mensaje'=>'No se pudo eliminar, el producto tiene '.$abarrotera->rowChange.' dependencias con la tabla presentacion');
 					}
 				}else{
-					$json=array('mensaje'=>'ID de la marca es obligatorío!!!');
+					$json=array('mensaje'=>'ID de la producto es obligatorío!!!');
 				}
 			break;
 		default:
 			case 'GET':
-				if (isset($_GET['id_marca'])) {
-					$param['id_marca']=$_GET['id_marca'];
-					$json=$abarrotera->consultar('select * from marca where id_marca=:id_marca order by marca',$param);
+				if (isset($_GET['id_producto'])) {
+					$param['id_producto']=$_GET['id_producto'];
+					$json=$abarrotera->consultar('select * from producto where id_producto=:id_producto order by producto',$param);
 				}else{
-					$json=$abarrotera->consultar('select * from marca order by marca');
+					$json=$abarrotera->consultar('select * from producto order by producto');
 				}
 				if (count($json)==0) {
-					$json=array('mensaje'=>'El marca no existe');
+					$json=array('mensaje'=>'El producto no existe');
 				}
 			break;
 	}

@@ -38,11 +38,16 @@
 		case 'DELETE':
 				if (isset($_GET['id_unidad_medida'])) {
 					$param['id_unidad_medida']=$_GET['id_unidad_medida'];
-					$abarrotera->borrar('unidad_medida',$param);
-					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se elimino la unidad de medida');
+					$abarrotera->consultar('select * from presentacion where id_unidad_medida=:id_unidad_medida',$param);
+					if ($abarrotera->rowChange==0) {
+						$abarrotera->borrar('unidad_medida',$param);
+						if ($abarrotera->rowChange>0) {
+							$json=array('mensaje'=>'Se elimino la unidad de medida');
+						}else{
+							$json=array('mensaje'=>'La unidad de medida no existe');
+						}	
 					}else{
-						$json=array('mensaje'=>'La unidad de medida no existe');
+						$json=array('mensaje'=>'No se pudo eliminar, la unidad de medida tiene '.$abarrotera->rowChange.' dependencias con la tabla presentacion');
 					}
 				}else{
 					$json=array('mensaje'=>'ID de la unida de de medida es obligatorío!!!');

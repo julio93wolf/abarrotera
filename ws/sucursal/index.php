@@ -38,11 +38,16 @@
 		case 'DELETE':
 				if (isset($_GET['id_sucursal'])) {
 					$param['id_sucursal']=$_GET['id_sucursal'];
-					$abarrotera->borrar('sucursal',$param);
-					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se elimino la sucursal');
+					$abarrotera->consultar('select * from carrito where id_sucursal=:id_sucursal',$param);
+					if ($abarrotera->rowChange==0) {
+						$abarrotera->borrar('sucursal',$param);
+						if ($abarrotera->rowChange>0) {
+							$json=array('mensaje'=>'Se elimino la sucursal');
+						}else{
+							$json=array('mensaje'=>'La sucursal no existe');
+						}
 					}else{
-						$json=array('mensaje'=>'La sucursal no existe');
+						$json=array('mensaje'=>'No se pudo eliminar, la sucursal tiene '.$abarrotera->rowChange.' dependencias con la tabla carrito');
 					}
 				}else{
 					$json=array('mensaje'=>'ID de la sucursal es obligatorío!!!');

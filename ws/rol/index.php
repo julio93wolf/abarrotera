@@ -38,11 +38,16 @@
 		case 'DELETE':
 				if (isset($_GET['id_rol'])) {
 					$param['id_rol']=$_GET['id_rol'];
-					$abarrotera->borrar('rol',$param);
-					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se elimino el rol');
+					$abarrotera->consultar('select * from usuario_rol where id_rol=:id_rol',$param);
+					if ($abarrotera->rowChange==0) {
+						$abarrotera->borrar('rol',$param);
+						if ($abarrotera->rowChange>0) {
+							$json=array('mensaje'=>'Se elimino el rol');
+						}else{
+							$json=array('mensaje'=>'El rol no existe');
+						}
 					}else{
-						$json=array('mensaje'=>'La rol no existe');
+						$json=array('mensaje'=>'No se pudo eliminar, el rol tiene '.$abarrotera->rowChange.' dependencias con la tabla usuario');
 					}
 				}else{
 					$json=array('mensaje'=>'ID del rol es obligatorío!!!');

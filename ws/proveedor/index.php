@@ -40,11 +40,16 @@
 		case 'DELETE':
 				if (isset($_GET['id_proveedor'])) {
 					$param['id_proveedor']=$_GET['id_proveedor'];
-					$abarrotera->borrar('proveedor',$param);
-					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se elimino el proveedor');
+					$abarrotera->consultar('select * from marca where id_proveedor=:id_proveedor',$param);
+					if ($abarrotera->rowChange==0) {
+						$abarrotera->borrar('proveedor',$param);
+						if ($abarrotera->rowChange>0) {
+							$json=array('mensaje'=>'Se elimino el proveedor');
+						}else{
+							$json=array('mensaje'=>'El proveedor no existe');
+						}
 					}else{
-						$json=array('mensaje'=>'El proveedor no existe');
+						$json=array('mensaje'=>'No se pudo eliminar, el proveedor tiene '.$abarrotera->rowChange.' dependencias con la tabla marca');
 					}
 				}else{
 					$json=array('mensaje'=>'ID del proveedor es obligatorío!!!');

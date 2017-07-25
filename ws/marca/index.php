@@ -42,11 +42,16 @@
 		case 'DELETE':
 				if (isset($_GET['id_marca'])) {
 					$param['id_marca']=$_GET['id_marca'];
-					$abarrotera->borrar('marca',$param);
-					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se elimino la marca');
+					$dato=$abarrotera->consultar('select * from producto where id_marca=:id_marca',$param);
+					if ($abarrotera->rowChange==0) {
+						$abarrotera->borrar('marca',$param);
+						if ($abarrotera->rowChange>0) {
+							$json=array('mensaje'=>'Se elimino la marca');
+						}else{
+							$json=array('mensaje'=>'La marca no existe');
+						}
 					}else{
-						$json=array('mensaje'=>'La marca no existe');
+						$json=array('mensaje'=>'No se pudo eliminar, la marca tiene '.$abarrotera->rowChange.' dependencias con la tabla producto');
 					}
 				}else{
 					$json=array('mensaje'=>'ID de la marca es obligatorío!!!');

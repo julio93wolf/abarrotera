@@ -18,6 +18,7 @@
 					}	
 				}
 				$statement->execute();
+				$this->rowChange=$statement->rowCount();
 				$datos=$statement->fetchAll();
 				return $datos;
 			}

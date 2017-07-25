@@ -2,7 +2,7 @@
 	include('../../admin/abarrotera.class.php');
 	$metodo=$_SERVER['REQUEST_METHOD'];
 	header('Content-Type: application/json');	
-	$json=array('mensaje'=>'no se implemento ninguna acción');
+	$json=array('mensaje'=>'No se implemento ninguna acción');
 	switch ($metodo) {
 		case 'POST':
 			$json=file_get_contents('php://input');
@@ -11,9 +11,9 @@
 				$param['categoria']=$value->categoria;
 				$abarrotera->insertar('categoria',$param);
 				if ($abarrotera->rowChange>0) {
-					$json=array('mensaje'=>'Se inserto la nueva categoria');
+					$json=array('mensaje'=>'Se inserto la nueva categoría');
 				}else{
-					$json=array('mensaje'=>'No se pudo insertar la categoria');
+					$json=array('mensaje'=>'No se inserto la categoría');
 				}
 			}
 			break;
@@ -26,26 +26,30 @@
 					$param['categoria']=$value->categoria;
 					$abarrotera->actualizar('categoria',$param,$llave);
 					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se actualizo la categoría');
+						$json=array('mensaje'=>'Se actualizó la categoría');
 					}else{
-						$json=array('mensaje'=>'No se pudo actualizar la categoría');
+						$json=array('mensaje'=>'No se actualizo la categoría');
 					}
 				}
 			}else{
-				$json=array('mensaje'=>'ID de la categoría es obligatorío!!!');
+				$json=array('mensaje'=>'El ID de la categoría es obligatorio!!!');
 			}
 			break;
 		case 'DELETE':
 				if (isset($_GET['id_categoria'])) {
 					$param['id_categoria']=$_GET['id_categoria'];
-					$abarrotera->borrar('categoria',$param);
-					if ($abarrotera->rowChange>0) {
-						$json=array('mensaje'=>'Se elimino la categoría');
+					$abarrotera->consultar('select * from marca where id_categoria=:id_categoria',$param);
+					if ($abarrotera->rowChange==0) {
+						$abarrotera->borrar('categoria',$param);
+						if ($abarrotera->rowChange>0)
+							$json=array('mensaje'=>'Se eliminó la categoría');
+						else
+							$json=array('mensaje'=>'La categoría no existe');
 					}else{
-						$json=array('mensaje'=>'La categoría no existe');
+						$json=array('mensaje'=>'No se elimino, la categoría tiene '.$abarrotera->rowChange.' dependencias con la tabla marca');
 					}
 				}else{
-					$json=array('mensaje'=>'ID de la categoría es obligatorío!!!');
+					$json=array('mensaje'=>'El ID de la categoría es obligatorio!!!');
 				}
 			break;
 		default:
