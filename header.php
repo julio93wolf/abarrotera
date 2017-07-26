@@ -25,8 +25,8 @@
 			</div>
 			<div id="login">
 				<ul>
-					<li><a href="registro.php">Registro</a></li>
-					<li><a href="login.php">Login</a></li>
+					<li><a href="/abarrotera/venta/registro">Registro</a></li>
+					<li><a href="/abarrotera/venta/login">Login</a></li>
 				</ul>
 			</div>
 		</header>
