@@ -1,24 +1,17 @@
-create user 'gerente'@'localhost' identified by '12345';
-grant all on abarrotera.* to 'gerente'@'localhost';
-
-drop database if exists abarrotera;
-create database abarrotera default charset utf8 default collate utf8_general_ci;
-use abarrotera;
-
 create table proveedor(
-	id_proveedor int auto_increment,
+	id_proveedor serial,
 	proveedor varchar (100) not null,
     primary key (id_proveedor)
 );
 
 create table categoria(
-	id_categoria int auto_increment,
+	id_categoria serial,
 	categoria varchar (100) not null,
     primary key (id_categoria)
 );
 
 create table marca(
-	id_marca int auto_increment,
+	id_marca serial,
 	marca varchar (100) not null,
 	id_proveedor int not null,
 	id_categoria int not null,
@@ -28,7 +21,7 @@ create table marca(
 );
 
 create table unidad_medida(
-	id_unidad_medida int auto_increment,
+	id_unidad_medida serial,
 	unidad_medida varchar (100) not null,
     primary key (id_unidad_medida)
 );
@@ -36,7 +29,7 @@ create table unidad_medida(
 alter table proveedor add column logo varchar(100);
 
 create table producto(
-	id_producto int auto_increment,
+	id_producto serial,
 	producto varchar (100) not null,
 	id_marca int not null,
     primary key (id_producto),
@@ -58,7 +51,7 @@ create table presentacion(
 );
 
 create table promocion(
-	id_promocion int auto_increment ,
+	id_promocion serial ,
 	fechai date not null,
 	fechat date not null,
     imagen varchar (100) not null,
@@ -75,16 +68,15 @@ create table promocion_producto(
 );
 
 create table rol(
-	id_rol int auto_increment,
+	id_rol serial,
 	rol varchar (100) not null,
     primary key (id_rol)
 );
 
 create table usuario(
-	id_usuario int auto_increment,
+	id_usuario serial,
 	correo varchar (100) not null unique,
 	contrasena varchar (32) not null,
-    llave varchar (96),
     primary key (id_usuario)
 );
 
@@ -97,7 +89,7 @@ create table usuario_rol(
 );
 
 create table cliente (
-	id_cliente int auto_increment,
+	id_cliente serial,
 	id_usuario int not null,
 	nombre varchar (100) not null,
 	apaterno varchar (100),
@@ -109,13 +101,13 @@ create table cliente (
 );
 
 create table sucursal(
-	id_sucursal int auto_increment,
+	id_sucursal serial,
 	sucursal varchar (100) not null,
     primary key (id_sucursal)
 );
 
 create table empleado(
-	id_empleado int auto_increment,
+	id_empleado serial,
 	id_usuario int not null,
 	nombre varchar (100) not null,
 	apaterno varchar (100),
@@ -125,7 +117,7 @@ create table empleado(
 );
 
 create table carrito(
-	id_carrito int auto_increment,
+	id_carrito serial,
 	id_cliente int not null,
 	id_empleado int not null,
 	id_sucursal int not null,
@@ -148,7 +140,7 @@ create table carrito_detalle(
 );
 
 create table comentario (
-	id_comentario int auto_increment,
+	id_comentario serial,
 	id_cliente int,
     nombre varchar (100) not null,
     email varchar (100) not null,
@@ -159,9 +151,8 @@ create table comentario (
     foreign key (id_cliente) references cliente (id_cliente)
 );
 
-/*###################################################################*/
-/*#							Vistas									#*/
-/*###################################################################*/
+
+
 
 /* Productos */
 drop view  if exists productos_view;
@@ -218,3 +209,5 @@ from
     left join unidad_medida um on pre.id_unidad_medida = um.id_unidad_medida
     left join promocion_producto prp on prp.sku = pre.sku
 order by producto asc;
+
+alter table usuario add llave varchar (96);

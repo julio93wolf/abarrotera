@@ -225,35 +225,41 @@ insert into presentacion values (26,'SKU-HDZ000016','210',1,12,24,8.8,'SKU-HDZ00
 /*###################################################################*/
 insert into rol values (null,'Cliente');
 insert into rol values (null,'Administrador');
-insert into rol values (null,'Tecnicos');
 
 /*###################################################################*/
 /*#							Usuarios								#*/
 /*###################################################################*/
-insert into usuario values (null,'abc123@gmail.com','123');
-insert into usuario values (null,'abc456@gmail.com','123');
-insert into usuario values (null,'def123@gmail.com','123');
-insert into usuario values (null,'def456@gmail.com','123');
+insert into usuario values (null,'luis_mazcorro@gmail.com','202cb962ac59075b964b07152d234b70',null);
+insert into usuario values (null,'juan_medellin@gmail.com','202cb962ac59075b964b07152d234b70',null);
+insert into usuario values (null,'everardo_medina@gmail.com','202cb962ac59075b964b07152d234b70',null);
+insert into usuario values (null,'maria_mendez@gmail.com','202cb962ac59075b964b07152d234b70',null);
+insert into usuario values (null,'manuel_mendoza@gmail.com','202cb962ac59075b964b07152d234b70',null);
+insert into usuario values (null,'abarrotera_galaxia@gmail.com','202cb962ac59075b964b07152d234b70',null);
 
 /*###################################################################*/
 /*#							Usuario Rol								#*/
 /*###################################################################*/
 insert into usuario_rol values (1,1);
 insert into usuario_rol values (2,1);
-insert into usuario_rol values (3,2);
+insert into usuario_rol values (3,1);
 insert into usuario_rol values (4,2);
+insert into usuario_rol values (5,2);
+insert into usuario_rol values (6,2);
 
 /*###################################################################*/
 /*#							Clientes								#*/
 /*###################################################################*/
-insert into cliente values (null,1,'Juan',null,null,null,null);
-insert into cliente values (null,2,'Maria',null,null,null,null);
+
+insert into cliente values (null,1,'Luis Fernando','Mazcorro','Ramos','Nochistlan de Mejia,Zacatecas','cliente_1.jpg');   
+insert into cliente values (null,2,'Juan Manuel','Medellin','Echeverria','Jimenez del Teul,Zacatecas','cliente_2.jpg');
+insert into cliente values (null,3,'Everado','Medina','Ruiz','Villanueva,Zacatecas','cliente_3.jpg');
 
 /*###################################################################*/
 /*#							Empleados								#*/
 /*###################################################################*/
-insert into empleado values (null,3,'Pedro',null,null);
-insert into empleado values (null,4,'Alfonso',null,null);
+insert into empleado values (null,4,'Maria de la Luz','Mendez','Lopez');
+insert into empleado values (null,5,'Manuel','Mendoza','Zuñiga');
+insert into empleado values (null,6,'WWW','Abarrotera','Galaxia');
 
 /*###################################################################*/
 /*#							Sucursales								#*/
@@ -263,8 +269,24 @@ insert into sucursal values (null,'Cortazar');
 insert into sucursal values (null,'Queretaro');
 
 /*###################################################################*/
+/*#							Promociones								#*/
+/*###################################################################*/
+
+insert into promocion values (null,'2017-7-1','2017-8-1','promocion_1.jpg');
+insert into promocion values (null,'2017-7-1','2017-8-1','promocion_2.jpg');
+insert into promocion values (null,'2017-7-1','2017-8-1','promocion_3.jpg');
+
+/*###################################################################*/
+/*#						Promocion Producto							#*/
+/*###################################################################*/
+insert into promocion_producto values (1,'SKU-MCK000009',20);
+insert into promocion_producto values (2,'SKU-MCK000017',20);
+insert into promocion_producto values (3,'SKU-NAI000002',20);
+
+/*###################################################################*/
 /*#							Carritos de Venta						#*/
 /*###################################################################*/
+
 insert into carrito values (null,1,1,1,'2017-7-5');
 insert into carrito_detalle values (1,'SKU-MCK000001',10,15.00,0);
 insert into carrito_detalle values (1,'SKU-MCK000005',5,18.00,0);
@@ -274,16 +296,3 @@ insert into carrito values (null,2,2,1,'2017-7-8');
 insert into carrito_detalle values (2,'SKU-HDZ000006',10,16.00,0);
 insert into carrito_detalle values (2,'SKU-HDZ000013',5,15.00,0);
 insert into carrito_detalle values (2,'SKU-HDZ000016',3,12.00,0);
-
-/*###################################################################*/
-/*#							Promociones								#*/
-/*###################################################################*/
-
-insert into promocion values (null,'2017-7-3','2017-7-10','promocion_1.jpg');
-insert into promocion values (null,'2017-7-7','2017-7-20','promocion_2.jpg');
-insert into promocion values (null,'2017-7-7','2017-7-20','promocion_3.jpg');
-
-/*###################################################################*/
-/*#						Promocion Producto							#*/
-/*###################################################################*/
-insert into promocion_producto values (1,'SKU-MCK000005',16);
